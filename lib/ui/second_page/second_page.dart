@@ -21,23 +21,39 @@ class SecondBuildWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Counter')),
-      body: BlocConsumer<SecondCubit, int>(
-        builder: (context, count) {
+      body: BlocConsumer<SecondCubit, SecondState>(
+        builder: (context, state) {
           return Column(
             children: [
-              Center(
-                child: Text(
-                  '$count',
-                  style: const TextStyle(
-                    color: Colors.pink,
-                    fontSize: 20
-                  ),
-                ),
+              ///showing state
+              Text(
+                '$state',
+                style: const TextStyle(color: Colors.pink, fontSize: 20),
               ),
+
+              ///i have written variable directly in cubit
+              Text(
+                context.read<SecondCubit>().counterCheck.toString(),
+                style: const TextStyle(color: Colors.pink, fontSize: 20),
+              ),
+
+              ///i have written variable in state class
+              (state is InitialState)
+                  ? Text(
+                      state.counter.toString(),
+                      style: const TextStyle(color: Colors.pink, fontSize: 20),
+                    )
+                  : Container()
             ],
           );
         },
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is InitialState) {
+            print(state.counter.toString());
+          } else {
+            print(state.toString());
+          }
+        },
       ),
       floatingActionButton: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -46,14 +62,16 @@ class SecondBuildWidget extends StatelessWidget {
           FloatingActionButton(
             child: const Icon(Icons.add),
             onPressed: () {
-              context.read<SecondCubit>().increment();
+              context.read<SecondCubit>().changeValueInCubit();
             },
           ),
           const SizedBox(height: 4),
           FloatingActionButton(
             child: const Icon(Icons.remove),
             onPressed: () {
-              context.read<SecondCubit>().decrement();
+              if(context.read<SecondCubit>().state is InitialState){
+                context.read<SecondCubit>().changeValueInState();
+              }
             },
           ),
         ],

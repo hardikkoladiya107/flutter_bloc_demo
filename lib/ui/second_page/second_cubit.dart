@@ -1,14 +1,32 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+class SecondCubit extends Cubit<SecondState> {
+  SecondCubit() : super(InitialState());
 
-class SecondCubit extends Cubit<int> {
-  SecondCubit() : super(0);
+  num counterCheck = 0;
 
-  void increment(){
-    emit(state + 1);
+  changeValueInCubit() {
+    (state as InitialState).counter;
+    counterCheck++;
+    emit(InitialState());
   }
-  void decrement(){
-    emit(state - 1);
-  }
 
+  changeValueInState() {
+    emit(InitialState().addValue());
+  }
 }
+
+class SecondState {}
+
+class InitialState extends SecondState {
+  int counter;
+
+  InitialState({this.counter = 0});
+
+  SecondState addValue() {
+    counter = counter + 1;
+    return InitialState();
+  }
+}
+
+class LoadingState extends SecondState {}
