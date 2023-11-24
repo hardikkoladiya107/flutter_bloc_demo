@@ -29,7 +29,7 @@ class CounterBuildWidget extends StatelessWidget {
               Text(context.watch<FirstCubit>().state.toString()),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed("/second");
+                  Navigator.of(context).pushNamed("/hiveExample");
                 },
                 child: const Text("Next"),
               )

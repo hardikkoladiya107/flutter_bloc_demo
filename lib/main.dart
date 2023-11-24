@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_demo/ui/first_page/first_page.dart';
+import 'package:flutter_bloc_demo/ui/hive_crud/hive_example.dart';
 import 'package:flutter_bloc_demo/ui/second_page/second_page.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+import 'db/hive_helper.dart';
+import 'models/cat_model.dart';
+
+Future<void> main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(CatModelAdapter());
+  await hiveHelper.init();
   runApp(const MyApp());
 }
 
@@ -20,6 +28,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const FirstPage(),
         '/second': (context) => const SecondPage(),
+        '/hiveExample': (context) => const HiveExample(),
       },
     );
   }
