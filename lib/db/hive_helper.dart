@@ -31,17 +31,21 @@ class HiveHelper {
     return catBox?.values.toList(); // get list of data from here
   }
 
-
-  updateCat(){
-    var model = const CatModel("new name", "new age", true);
-    catBox?.put("name", model);// update model by using key
-    catBox?.putAt(0, model);// update model by using key
+  CatModel? getCatFromIndex(int index){
+    return catBox?.getAt(index);
   }
 
-  deleteCat(){
-    catBox?.delete("name");
-    catBox?.deleteAt(0);
-    catBox?.deleteAll([]);
+
+  updateCat(CatModel model,int index){
+    // var model = const CatModel("new name", "new age", true);
+    // catBox?.put("name", model);// update model by using key
+    catBox?.putAt(index, model);// update model by using key
+  }
+
+  deleteCat(int index){
+   //catBox?.delete("name");
+    catBox?.deleteAt(index);
+    //catBox?.deleteAll([]);
   }
 }
 
