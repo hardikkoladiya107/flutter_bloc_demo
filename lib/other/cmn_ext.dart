@@ -25,4 +25,8 @@ extension extOnWidget on Widget {
       child: this,
     );
   }
+
+  Widget get safeArea{
+    return SafeArea(child: this);
+  }
 }
