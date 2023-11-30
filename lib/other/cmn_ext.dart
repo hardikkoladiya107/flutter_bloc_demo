@@ -29,4 +29,8 @@ extension extOnWidget on Widget {
   Widget get safeArea{
     return SafeArea(child: this);
   }
+
+  Widget get center{
+    return Center(child: this,);
+  }
 }

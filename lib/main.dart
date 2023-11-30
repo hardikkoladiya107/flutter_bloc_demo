@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_demo/ui/firestore_crud/firestore_example.dart';
-import 'package:flutter_bloc_demo/ui/third_page/third_screen.dart';
+import 'package:flutter_bloc_demo/ui/logic_example/logic_one_example.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'db/hive_helper.dart';
 import 'firebase_options.dart';
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:   FirestoreExample(),
+      home: LogicOneExample(),
     );
   }
 }
