@@ -107,6 +107,7 @@ class _LogicOneExampleState extends State<LogicOneExample> {
       );
     }
   }
-
-
 }
+
+//4 % 18 = 4
+//18 % 4 = 2
