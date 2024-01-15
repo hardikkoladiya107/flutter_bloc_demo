@@ -7,18 +7,6 @@ class FirstPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<FirstCubit>(
-      create: (context) => FirstCubit(),
-      child: const CounterBuildWidget(),
-    );
-  }
-}
-
-class CounterBuildWidget extends StatelessWidget {
-  const CounterBuildWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Counter')),
       body: BlocConsumer<FirstCubit, int>(

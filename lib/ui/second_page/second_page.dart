@@ -7,18 +7,6 @@ class SecondPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<SecondCubit>(
-      create: (context) => SecondCubit(),
-      child: const SecondBuildWidget(),
-    );
-  }
-}
-
-class SecondBuildWidget extends StatelessWidget {
-  const SecondBuildWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Counter')),
       body: BlocConsumer<SecondCubit, SecondState>(
@@ -40,9 +28,9 @@ class SecondBuildWidget extends StatelessWidget {
               ///i have written variable in state class
               (state is InitialState)
                   ? Text(
-                      state.counter.toString(),
-                      style: const TextStyle(color: Colors.pink, fontSize: 20),
-                    )
+                state.counter.toString(),
+                style: const TextStyle(color: Colors.pink, fontSize: 20),
+              )
                   : Container()
             ],
           );
